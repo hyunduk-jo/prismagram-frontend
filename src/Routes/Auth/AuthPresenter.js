@@ -49,35 +49,45 @@ const Form = styled(Box)`
 
 export default ({
   action,
-  username,
-  firstname,
-  lastname,
+  userName,
+  firstName,
+  lastName,
   email,
   setAction,
-  onLogin
+  onSubmit,
+  secret
 }) => {
   return (
     <Wrapper>
       <Form>
-        {action === "login" ?
-          <form onSubmit={onLogin}>
+        {action === "login" && (
+          <form onSubmit={onSubmit}>
             <Input placeholder={"Email"} {...email} type="email" />
             <Button text={"Log In"} />
-          </form> :
-          <form onSubmit={onLogin}>
+          </form>
+        )}
+        {action === "signup" && (
+          <form onSubmit={onSubmit}>
             <Input placeholder={"Email"} {...email} type="email" />
-            <Input placeholder={"Username"} {...username} />
-            <Input placeholder={"First name"} {...firstname} />
-            <Input placeholder={"Last name"} {...lastname} />
+            <Input placeholder={"UserName"} {...userName} />
+            <Input placeholder={"First Name"} {...firstName} />
+            <Input placeholder={"Last Name"} {...lastName} />
             <Button text={"Sign Up"} />
           </form>
-        }
-
+        )}
+        {action === "confirm" && (
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"Paste your secret"} required {...secret} />
+            <Button text={"Confirm"} />
+          </form>
+        )}
       </Form>
+      {action !== "confirm" && (
       <StateChanger>{action === "login" ?
         <>Don't have an account? <Link onClick={() => { setAction("signUp") }}>Sign up</Link></> :
         <>Have an account? <Link onClick={() => { setAction("login") }}>Log in</Link></>}
       </StateChanger>
+      )}
     </Wrapper>
   )
 };

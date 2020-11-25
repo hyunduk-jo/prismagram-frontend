@@ -6,6 +6,8 @@ import AppRouter from './Router';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/client';
 import Footer from './Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /* // eslint-disable-next-line
 export default () => (
@@ -37,6 +39,7 @@ function App() {
           <GlobalStyles />
           <AppRouter isLoggedIn={isLoggedIn} />
           <Footer />
+          <ToastContainer position={toast.POSITION.TOP_LEFT} />
         </Wrapper>
       </ThemeProvider>
     </div>
