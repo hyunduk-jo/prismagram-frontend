@@ -68,7 +68,7 @@ const ME = gql`
   }
 }
 `;
-
+// eslint-disable-next-line
 export default withRouter(({ history }) => {
   const search = useInput("");
   const { data } = useQuery(ME);

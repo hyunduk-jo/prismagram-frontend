@@ -8,6 +8,7 @@ const Footer = styled.footer`
   text-transform:uppercase;
   font-weight:600;
   font-size: 12px;
+  margin: 50px 0px;
 `;
 
 const List = styled.ul`
@@ -28,7 +29,7 @@ const Link = styled.a`
 const Copyright = styled.span`
   color:${props => props.theme.darkGreyColor}
 `;
-
+// eslint-disable-next-line
 export default () =>
   <Footer>
     <List>
