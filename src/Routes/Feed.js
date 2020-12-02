@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Loader from '../Components/Loader';
 import Post from '../Components/Post';
-import Helmet from 'react-helmet';
+import Helmet from 'rl-react-helmet';
 
 const FEED_QUERY = gql`
   {

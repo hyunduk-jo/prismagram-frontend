@@ -1,13 +1,50 @@
 import PostPresenter from './PostPresenter';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useInput from '../../Hooks/useInput';
+import { useMutation } from '@apollo/client';
+import { ADD_COMMENT, TOGGLE_LIKE } from './PostQueries';
+import { toast } from 'react-toastify';
 
 const PostContainer = ({ id, user, files, comments, likeCount, isLiked, createdAt, caption, location }) => {
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
+  const [currentItem, setCurrentItem] = useState(0);
   const comment = useInput("");
-  return <PostPresenter id={id} caption={caption} location={location} user={user} files={files} comments={comments} likeCount={likeCountS} isLiked={isLikedS} createdAt={createdAt} newComment={comment} setIsLiked={setIsLiked} setLikeCount={setLikeCount} />
+
+  const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
+    variables: { postId: id }
+  });
+
+  const [addCommentMutation] = useMutation(ADD_COMMENT, {
+    variables: { postId: id, text: comment.value }
+  })
+
+  const slide = () => {
+    const totalFiles = files.length;
+    if (currentItem === totalFiles - 1) {
+      setTimeout(() => setCurrentItem(0), 3000);
+    } else {
+      setTimeout(() => setCurrentItem(currentItem + 1), 3000);
+    }
+  }
+
+  useEffect(() => {
+    slide();
+  }, [currentItem]);
+
+  const toggleLike = () => {
+    toggleLikeMutation();
+    if (isLikedS === true) {
+      setIsLiked(false);
+      setLikeCount(likeCountS - 1);
+    } else {
+      setIsLiked(true);
+      setLikeCount(likeCountS + 1);
+    }
+  }
+
+  return <PostPresenter id={id} toggleLike={toggleLike} currentItem={currentItem} caption={caption} location={location} user={user} files={files} comments={comments} likeCount={likeCountS} isLiked={isLikedS} createdAt={createdAt} newComment={comment} setIsLiked={setIsLiked} setLikeCount={setLikeCount} />
 }
 
 PostContainer.propTypes = {
