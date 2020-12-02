@@ -34,7 +34,7 @@ const Files = styled.div`
   padding-bottom: 100%;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   flex-shrink: 0;
 `;
 

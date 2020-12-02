@@ -41,6 +41,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 80vh;
+  flex-direction: column;
 `;
 
 // eslint-disable-next-line
