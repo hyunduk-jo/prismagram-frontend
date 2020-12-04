@@ -3,8 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
 import { Compass, HeartEmpty, Instagram, User } from "./Icons";
-import { useQuery } from "@apollo/client";
-import { ME } from "../sharedQueries";
+import { gql, useQuery } from "@apollo/client";
 
 const Header = styled.header`
   width: 100%;
@@ -61,6 +60,13 @@ const HeaderLink = styled(Link)`
   }
 `;
 
+const ME = gql`
+{
+  me{
+    userName
+  }
+}
+`;
 
 // eslint-disable-next-line
 export default withRouter(({ history }) => {
