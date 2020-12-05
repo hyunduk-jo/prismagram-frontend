@@ -12,6 +12,7 @@ const ME = gql`
     userName
     avatar
     fullName
+    isSelf
   }
 }
 `;
@@ -51,8 +52,14 @@ const Profile = () => {
         <AvatarContainer>{data && data.me && <Avatar size={"lg"} url={data.me.avatar} />}</AvatarContainer>
         <TextContainer><Username>{username}</Username></TextContainer>
       </ProfileContainer>
+      {
+        data && data.me && (
+          username === data.me.userName && "It's me"
+        )
+      }
     </Container>
   );
+
 }
 
 export default Profile;
