@@ -25,6 +25,7 @@ const Container = styled.div`
       opacity:1;
     }
   }
+  margin: 20px;
 `;
 
 const Number = styled.div`
@@ -59,7 +60,7 @@ const SquarePost = ({ likeCount, commentCount, file }) => {
 SquarePost.propTypes = {
   likeCount: PropTypes.number.isRequired,
   commentCount: PropTypes.number.isRequired,
-  file: PropTypes.string.isRequired
+  file: PropTypes.object.isRequired
 }
 
 export default SquarePost;

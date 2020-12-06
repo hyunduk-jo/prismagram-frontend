@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
 import { gql } from 'apollo-boost';
-import React from 'react';
 import styled from 'styled-components';
 import Loader from '../Components/Loader';
 import Post from '../Components/Post';
