@@ -92,7 +92,7 @@ export default withRouter(({ history }) => {
           </form>
         </HeaderColumn>
         <HeaderColumn>
-          <HeaderLink to="/explore">
+          <HeaderLink to="/upload">
             <Compass />
           </HeaderLink>
           <HeaderLink to="/notifications">
